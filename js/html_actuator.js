@@ -62,7 +62,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value;
+  inner.textContent = tile.value.toBigCharacter();
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
@@ -137,3 +137,37 @@ HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
 };
+
+Number.prototype.toBigCharacter = function () {
+	var bigCharacters = {
+		0: '零',
+		1: '壹',
+		2: '貳',
+		3: '參',
+		4: '肆',
+		5: '伍',
+		6: '陸',
+		7: '漆',
+		8: '捌',
+		9: '玖'
+	}
+
+	var bigString = "";
+
+	var digit;
+	var counter = this;
+
+	if (digit = Math.floor(counter / 10000)) bigString += bigCharacters[digit] + "萬";
+	counter %= 10000;
+	if (digit = Math.floor(counter / 1000)) bigString += bigCharacters[digit] + "阡";
+	counter %= 1000;
+	if (digit = Math.floor(counter / 100)) bigString += bigCharacters[digit] + "陌";
+	counter %= 100;
+	if (digit = Math.floor(counter / 10)) bigString += bigCharacters[digit] + "拾";
+	counter %= 10;
+	if (digit = Math.floor(counter / 1)) bigString += bigCharacters[digit];
+
+	if (bigString === "") bigString = "零";
+
+	return bigString;
+}

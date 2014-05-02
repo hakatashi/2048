@@ -21,13 +21,20 @@ $game-container-background: #bbada0;
 
 $transition-speed: 100ms;
 
+@font-face {
+  font-family: 'mplus-1c-heavy';
+  src: url('../fonts/mplus-1c-heavy-sub.eot') format('eot');
+  src: url('../fonts/mplus-1c-heavy-sub.woff') format('woff');
+  src: url('../fonts/mplus-1c-heavy-sub.ttf') format('truetype');
+}
+
 html, body {
   margin: 0;
   padding: 0;
 
   background: #faf8ef;
   color: $text-color;
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, 'mplus-1c-heavy', sans-serif;
   font-size: 18px;
 }
 
@@ -382,18 +389,18 @@ hr {
       }
 
       // Adjust font size for bigger numbers
-      @if $power >= 100 and $power < 1000 {
-        font-size: 45px;
+      @if $power >= 10 and $power < 100 {
+        font-size: 30px;
 
         // Media queries placed here to avoid carrying over the rest of the logic
         @include smaller($mobile-threshold) {
-          font-size: 25px;
+          font-size: 15px;
         }
-      } @else if $power >= 1000 {
-        font-size: 35px;
+      } @else if $power >= 100 {
+        font-size: 20px;
 
         @include smaller($mobile-threshold) {
-          font-size: 15px;
+          font-size: 10px;
         }
       }
     }
@@ -406,10 +413,10 @@ hr {
     color: $bright-text-color;
     background: mix(#333, $tile-gold-color, 95%);
 
-    font-size: 30px;
+    font-size: 14px;
 
     @include smaller($mobile-threshold) {
-      font-size: 10px;
+      font-size: 6px;
     }
   }
 }
