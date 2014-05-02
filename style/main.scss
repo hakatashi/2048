@@ -10,10 +10,10 @@ $tile-border-radius: 3px;
 $mobile-threshold: $field-width + 20px;
 
 $text-color: #776E65;
-$bright-text-color: #f9f6f2;
+$bright-text-color: #776E65;
 
 $tile-color: #eee4da;
-$tile-gold-color: #edc22e;
+$tile-gold-color: #eee4da;
 $tile-gold-glow-color: lighten($tile-gold-color, 15%);
 
 $game-container-margin-top: 40px;
@@ -378,14 +378,14 @@ hr {
       }
 
       // Set background
-      background: $mixed-background;
+      background: $tile-color;
 
       // Add glow
       $glow-opacity: max($exponent - 4, 0) / ($limit - 4);
 
       @if not $special-background {
-        box-shadow: 0 0 30px 10px rgba($tile-gold-glow-color, $glow-opacity / 1.8),
-                    inset 0 0 0 1px rgba(white, $glow-opacity / 3);
+        // box-shadow: 0 0 30px 10px rgba($tile-gold-glow-color, $glow-opacity / 1.8),
+        //             inset 0 0 0 1px rgba(white, $glow-opacity / 3);
       }
 
       // Adjust font size for bigger numbers
@@ -411,7 +411,7 @@ hr {
   // Super tiles (above 2048)
   &.tile-super .tile-inner {
     color: $bright-text-color;
-    background: mix(#333, $tile-gold-color, 95%);
+    background: $tile-color;
 
     font-size: 14px;
 
